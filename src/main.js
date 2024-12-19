@@ -1,30 +1,35 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+// import './style.css'
+// import javascriptLogo from './javascript.svg'
+// import viteLogo from '/vite.svg'
+// import { setupCounter } from './counter.js'
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
-import './styles.css';
+// document.querySelector('#app').innerHTML = `
+//   <div>
+//     <a href="https://vite.dev" target="_blank">
+//       <img src="${viteLogo}" class="logo" alt="Vite logo" />
+//     </a>
+//     <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
+//       <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
+//     </a>
+//     <h1>Hello Vite!</h1>
+//     <div class="card">
+//       <button id="counter" type="button"></button>
+//     </div>
+//     <p class="read-the-docs">
+//       Click on the Vite logo to learn more
+//     </p>
+//   </div>
+// `
+
+const existingApp = document.querySelector('#app');
+if (existingApp) {
+    existingApp.remove();
+}
+//デフォルトページの無効化
 
 // Create and append HTML structure dynamically
 const app = document.createElement('div');
-app.id = 'app';
+app.id = '#app';
 document.body.appendChild(app);
 
 app.innerHTML = `
@@ -61,7 +66,7 @@ app.innerHTML = `
             <p id="support-spell">Spell: None</p>
         </div>
     </div>
-    <button onclick="resetPicks()" class="reset">Reset</button>
+    <button id="reset-button" class="reset">Reset</button>
 `;
 
 // Add styles dynamically
@@ -184,6 +189,9 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('mid-button').addEventListener('click', () => pickChampion('mid'));
     document.getElementById('adc-button').addEventListener('click', () => pickChampion('adc'));
     document.getElementById('support-button').addEventListener('click', () => pickChampion('support'));
+
+    // Reset button listener
+    document.getElementById('reset-button').addEventListener('click', resetPicks);
 });
 
-setupCounter(document.querySelector('#counter'))
+// setupCounter(document.querySelector('#counter'))
