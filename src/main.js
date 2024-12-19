@@ -33,6 +33,9 @@ app.id = '#app';
 document.body.appendChild(app);
 
 app.innerHTML = `
+    <div class="header">
+        <img src="LoLTITLE1.webp" alt="League of Legends" class="logo-img" />
+    </div>
     <h1>League of Legends Team Randomizer</h1>
     <div class="role-container">
         <div class="role" id="top">
@@ -66,12 +69,20 @@ app.innerHTML = `
             <p id="support-spell">Spell: None</p>
         </div>
     </div>
-    <button id="reset-button" class="reset">Reset</button>
+    <div class="reset-container">
+      <button id="reset-button" class="reset">Reset</button>
+    </div>
 `;
 
 // Add styles dynamically
 const style = document.createElement('style');
 style.textContent = `
+    .header {
+        display: flex;
+        justify-content: center; /* 中央揃え */
+        align-items: center; /* 垂直方向にも中央揃え */
+        margin-bottom: 20px; /* タイトルとの間隔を調整 */
+    }
     body {
         font-family: Arial, sans-serif;
         margin: 0;
@@ -91,8 +102,15 @@ style.textContent = `
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
 
+    .logo-img {
+        width: 600px; /* 画像の幅を指定、適宜変更 */
+        height: auto; /* 高さは自動で調整 */
+
+    }
+
     h1 {
         color: #333;
+        text-align: center;
     }
 
     .role-container {
@@ -132,8 +150,19 @@ style.textContent = `
     }
 
     .reset {
-        margin-top: 20px;
+        padding: 10px 15px;
         background-color: #dc3545;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .reset-container {
+        display: flex;
+        justify-content: center; /* ボタンを中央揃え */
+        margin-top: 20px; /* 上の要素との間隔を調整 */
     }
 
     .reset:hover {
