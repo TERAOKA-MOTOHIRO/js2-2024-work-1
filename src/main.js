@@ -32,31 +32,31 @@ app.innerHTML = `
     <div class="role-container">
         <div class="role" id="top">
             <h2>Top</h2>
-            <button onclick="pickChampion('top')">Pick Champion</button>
+            <button id="top-button">Pick Champion</button>
             <p id="top-champion">Champion: None</p>
             <p id="top-spell">Spell: None</p>
         </div>
         <div class="role" id="jungle">
             <h2>Jungle</h2>
-            <button onclick="pickChampion('jungle')">Pick Champion</button>
+            <button id="jungle-button">Pick Champion</button>
             <p id="jungle-champion">Champion: None</p>
             <p id="jungle-spell">Spell: None</p>
         </div>
         <div class="role" id="mid">
             <h2>Mid</h2>
-            <button onclick="pickChampion('mid')">Pick Champion</button>
+            <button id="mid-button">Pick Champion</button>
             <p id="mid-champion">Champion: None</p>
             <p id="mid-spell">Spell: None</p>
         </div>
         <div class="role" id="adc">
             <h2>ADC</h2>
-            <button onclick="pickChampion('adc')">Pick Champion</button>
+            <button id="adc-button">Pick Champion</button>
             <p id="adc-champion">Champion: None</p>
             <p id="adc-spell">Spell: None</p>
         </div>
         <div class="role" id="support">
             <h2>Support</h2>
-            <button onclick="pickChampion('support')">Pick Champion</button>
+            <button id="support-button">Pick Champion</button>
             <p id="support-champion">Champion: None</p>
             <p id="support-spell">Spell: None</p>
         </div>
@@ -177,8 +177,13 @@ function resetPicks() {
     });
 }
 
-// Add your custom champion data here
-// Example:
-// champions.top.push("CustomChampion");
+// Add event listeners after the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('top-button').addEventListener('click', () => pickChampion('top'));
+    document.getElementById('jungle-button').addEventListener('click', () => pickChampion('jungle'));
+    document.getElementById('mid-button').addEventListener('click', () => pickChampion('mid'));
+    document.getElementById('adc-button').addEventListener('click', () => pickChampion('adc'));
+    document.getElementById('support-button').addEventListener('click', () => pickChampion('support'));
+});
 
 setupCounter(document.querySelector('#counter'))
